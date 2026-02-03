@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ag_24 Official</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<section id="page1" class="page active">
+  <div class="card">
+    <img src="Neutral Brown Feminine Typography Swash Beauty Logo.jpg" class="avatar">
+    <h1>ag.tertahan</h1>
+    <p class="subtitle">Isi data dulu ya teman teman mimin 🤍</p>
+
+    <input type="text" id="username" placeholder="Username kamu">
+    <input type="text" id="wa" placeholder="Nomor WhatsApp">
+
+    <button class="btn save" onclick="goNext()">Masuk</button>
+  </div>
+</section>
+
+<!-- PAGE 2 -->
+<section id="page2" class="page">
+  <audio id="bgMusic">
+    <source src="WhatsApp Video 2026-02-03 at 23.32.47.mp4" type="audio/mpeg">
+  </audio>
+
+  <div class="diagonal-box">
+    <div class="left">
+      <img src="Neutral Brown Feminine Typography Swash Beauty Logo.jpg" class="logo-big">
+      <h2>Welcome 🤍</h2>
+    </div>
+
+    <div class="right">
+      <h3>Pilih tujuan kamu</h3>
+
+      <a href="https://whatsapp.com/channel/0029VbCQfzR4dTnJnoLGAG2b" class="btn wa" target="_blank">
+        Saluran WhatsApp
+      </a>
+
+      <a href="https://www.tiktok.com/@ag_2402_?_r=1&_t=ZS-93cHsAPu4IC" target="_blank">
+  <button class="follow-btn">FOLLOW TIKTOK</button>
+</a>
+
+
+      <button class="btn ig" onclick="toggleIG()">Instagram ▼</button>
+
+      <div id="igChoice" class="ig-list">
+        <a href="https://www.instagram.com/aditboboy_117?igsh=MXJ3ZWVrM3B3eGlpbw%3D%3D&utm_source=qr" target="_blank">IG aditboboy_117</a>
+        <a href="https://www.instagram.com/gheaa.dilhaa?igsh=cHpwbDNnOXpkb3Q1&utm_source=qr" target="_blank">IG gheaa</a>
+        <a href="https://www.instagram.com/ag.tertahan?igsh=Z3ltcHAzZTdsZGo%3D&utm_source=qr" target="_blank">IG Ag.tertahan</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function goNext() {
+    const u = username.value.trim();
+    const w = wa.value.trim();
+
+    if (!u || !w) {
+      alert("Username & WhatsApp wajib diisi!");
+      return;
+    }
+
+    let data = JSON.parse(localStorage.getItem("users")) || [];
+    data.push({ u, w, time: new Date().toLocaleString() });
+    localStorage.setItem("users", JSON.stringify(data));
+
+    page1.classList.remove("active");
+    page2.classList.add("active");
+
+    // PLAY MUSIC
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.6;
+    music.play();
+  }
+
+  function toggleIG() {
+    igChoice.classList.toggle("show");
+  }
+</script>
+
+</body>
+</html>
